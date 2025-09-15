@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+    user-select: none;
+}
+
+#main-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.ui-element {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Score Display */
+#score-container {
+    top: 20px;
+    right: 20px;
+    min-width: 200px;
+}
+
+.score-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.score-display:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* Combo Display */
+#combo-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: comboGlow 1s ease-in-out infinite alternate;
+}
+
+.combo-display {
+    text-align: center;
+}
+
+.combo-text {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6600;
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.8);
+}
+
+.combo-multiplier {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffaa00;
+    text-shadow: 0 0 20px rgba(255, 170, 0, 0.8);
+}
+
+@keyframes comboGlow {
+    0% { box-shadow: 0 4px 15px rgba(255, 102, 0, 0.5); }
+    100% { box-shadow: 0 4px 25px rgba(255, 102, 0, 0.8); }
+}
+
+/* Trick Notifications */
+#trick-notifications {
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    width: 300px;
+}
+
+.trick-notification {
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.9), rgba(0, 200, 100, 0.9));
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    animation: slideIn 0.5s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+.trick-notification.started {
+    background: linear-gradient(90deg, rgba(0, 200, 255, 0.9), rgba(0, 150, 200, 0.9));
+    border-color: #00ccff;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+}
+
+.trick-notification.flip {
+    background: linear-gradient(90deg, rgba(255, 100, 0, 0.9), rgba(200, 80, 0, 0.9));
+    border-color: #ff6400;
+    box-shadow: 0 4px 15px rgba(255, 100, 0, 0.3);
+}
+
+.notification-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.notification-details {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Current Trick Display */
+#current-trick {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    text-align: center;
+    min-width: 150px;
+}
+
+.trick-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
+    margin-bottom: 8px;
+}
+
+.trick-timer {
+    font-size: 16px;
+    color: #ffaa00;
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.6);
+}
+
+/* Perfect Animation */
+#perfect-animation {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: perfectPulse 2s ease-out forwards;
+}
+
+.perfect-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    margin-bottom: 10px;
+}
+
+.perfect-bonus {
+    font-size: 24px;
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.8);
+}
+
+@keyframes perfectPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Statistics Panel */
+#stats-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 400px;
+    max-width: 500px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    pointer-events: auto;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.stats-header h2 {
+    color: #00ff88;
+    font-size: 24px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 68, 68, 0.2);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #score-container {
+        top: 10px;
+        right: 10px;
+        min-width: 150px;
+    }
+    
+    #trick-notifications {
+        width: 250px;
+        right: 10px;
+    }
+    
+    .perfect-text {
+        font-size: 36px;
+    }
+    
+    #stats-panel {
+        min-width: 300px;
+        margin: 20px;
+    }
+}

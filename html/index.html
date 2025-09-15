@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS-Tricks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-container">
+        <!-- Score Display -->
+        <div id="score-container" class="ui-element">
+            <div id="current-score" class="score-display">
+                <span class="label">Score:</span>
+                <span class="value" id="score-value">0</span>
+            </div>
+            <div id="session-score" class="score-display">
+                <span class="label">Session:</span>
+                <span class="value" id="session-value">0</span>
+            </div>
+        </div>
+
+        <!-- Combo Display -->
+        <div id="combo-container" class="ui-element hidden">
+            <div class="combo-display">
+                <span class="combo-text">COMBO</span>
+                <span class="combo-multiplier" id="combo-value">x1</span>
+            </div>
+        </div>
+
+        <!-- Trick Notifications -->
+        <div id="trick-notifications">
+            <!-- Dynamic trick notifications will appear here -->
+        </div>
+
+        <!-- Current Trick Display -->
+        <div id="current-trick" class="ui-element hidden">
+            <div class="trick-name" id="trick-name">WHEELIE</div>
+            <div class="trick-timer" id="trick-timer">0.0s</div>
+        </div>
+
+        <!-- Perfect Trick Animation -->
+        <div id="perfect-animation" class="hidden">
+            <div class="perfect-text">PERFECT!</div>
+            <div class="perfect-bonus" id="perfect-bonus">+50</div>
+        </div>
+
+        <!-- Statistics Panel -->
+        <div id="stats-panel" class="hidden">
+            <div class="stats-header">
+                <h2>Trick Statistics</h2>
+                <button id="close-stats" class="close-btn">&times;</button>
+            </div>
+            <div class="stats-content">
+                <div class="stat-row">
+                    <span class="stat-label">Total Score:</span>
+                    <span class="stat-value" id="total-score-stat">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Session Score:</span>
+                    <span class="stat-value" id="session-score-stat">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Total Tricks:</span>
+                    <span class="stat-value" id="total-tricks-stat">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Best Combo:</span>
+                    <span class="stat-value" id="best-combo-stat">x1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
